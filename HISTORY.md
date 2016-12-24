@@ -2,10 +2,9 @@
 
 ### 1.0.0
 
-- [FIX] Fix getattr off by one for quarter
-- [FIX] Fix negative offset for UTC
-- [FIX] Update arrow.py
+- [FIX] Work on new version of sAUCpy
+- [FIX] Update sAUCpy.py
 
 ### 1.0.1
 
-- [NEW] Remove duplicate code
+- [NEW] Remove superfluous code
