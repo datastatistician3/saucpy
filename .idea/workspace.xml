@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e1c5c37-95fa-4751-9218-1c26dbc6ade7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MANIFEST.in" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.rst" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sAUCpy.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/setup.cfg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/setup.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,8 +22,58 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="setup.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/setup.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="setup.cfg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/setup.cfg">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.rst" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.rst">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MANIFEST.in" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MANIFEST.in">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sAUCpy.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sAUCpy.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -43,6 +98,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/__init__.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
+        <option value="$PROJECT_DIR$/sAUCpy.py" />
       </list>
     </option>
   </component>
@@ -355,6 +412,46 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.rst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MANIFEST.in">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sAUCpy.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
