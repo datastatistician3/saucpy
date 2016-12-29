@@ -65,12 +65,21 @@ def expand_grid(*itrs):
 a = [1,2,3]
 b = [5,7,9]
 
+df=pd.DataFrame({"Animal":["dog","dolphin","chicken","ant","spider"],
+                 "Legs":[4,0,2,6,8],
+                 "Age" : [4,3,3,2,2],
+                 "Gender":['f','m','f','m','f']})
 
-def pass_vars(*args,b, data):
-    df = data[[args,b]] 
+def sAUC(predictors, response, group, data):
+    predictors.append(response); predictors.append(group)
+    all_vars = predictors
+    df = data[all_vars] 
     print(df)
 
-pass_vars('Animal', 'Legs',b='age', data=df)
+
+pass_vars(x_vars = ['Animal', 'Legs'],yvar='Gender', group='Age', data=df)
+
+
 
 
 def prod(*args):
