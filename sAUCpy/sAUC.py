@@ -55,7 +55,6 @@ import pandas
 
 # expandgrid(dictionary)
 
-
 import itertools
 def expand_grid(*itrs):
    product = list(itertools.product(*itrs))
@@ -65,5 +64,16 @@ def expand_grid(*itrs):
 
 a = [1,2,3]
 b = [5,7,9]
+
+
+def pass_vars(*args,b, data):
+    df = data[[args,b]] 
+    print(df)
+
+pass_vars('Animal', 'Legs',b='age', data=df)
+
+
+def prod(*args):
+    return(sum(args))
 c = [2,3]
 pd.DataFrame(expand_grid(a, b, c))
