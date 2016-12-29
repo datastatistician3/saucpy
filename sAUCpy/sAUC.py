@@ -2,9 +2,7 @@ import numpy
 
 def finv(x):
     return (-(numpy.log(x)) - 1)
-    
 
-    
 m = len(ya)
 p = len(yb)
 I = numpy.zeros(shape = (m, p))
@@ -25,7 +23,6 @@ def calculate_auc(ya, yb, data = None):
             logitauchat = log(auchat/(1-auchat))
             var_logitauchat = vhat_auchat /((auchat**2)*(1-auchat)**2)
             return(var_logitauchat)
-
 
 ya = [3,2,4,3]
 yb = [1,2,2,3]
@@ -64,25 +61,45 @@ def expand_grid(*itrs):
 
 a = [1,2,3]
 b = [5,7,9]
+c = [1,3]
+pd.DataFrame(expand_grid(a, b, c))
+
 
 df=pd.DataFrame({"Animal":["dog","dolphin","chicken","ant","spider"],
                  "Legs":[4,0,2,6,8],
                  "Age" : [4,3,3,2,2],
                  "Gender":['f','m','f','m','f']})
 
-def sAUC(predictors, response, group, data):
-    predictors.append(response); predictors.append(group)
+def sAUC(y, x, group, data):
+    input_response = y
+    input_covariates = x
+    input_treatment = group
+    predictors.append(group)
     all_vars = predictors
     df = data[all_vars] 
     print(df)
-
-
-pass_vars(x_vars = ['Animal', 'Legs'],yvar='Gender', group='Age', data=df)
-
+    Warning("Data are being analyzed. Please, be patient.")
 
 
 
-def prod(*args):
-    return(sum(args))
-c = [2,3]
-pd.DataFrame(expand_grid(a, b, c))
+pass_vars(y='Gender', x = ['Animal', 'Legs'], group='Age', data=df)
+
+
+sAUC()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
