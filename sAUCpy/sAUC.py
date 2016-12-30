@@ -87,6 +87,48 @@ pass_vars(y='Gender', x = ['Animal', 'Legs'], group='Age', data=df)
 
 sAUC()
 
+## Get all levels of factors
+import pandas as pd
+import numpy as np
+# Create an example dataframe
+data = {'name': ['Jason', 'Molly','Molly', 'Tina', 'Jake', 'Amy'],
+        'year': [2012, 2012, 2013, 2014, 2014, 2012],
+        'reports': [4, 24, 31, 2, 3,2],
+        'Dummy': [1,0,1,0,0,1]}
+df = pd.DataFrame(data)
+df.columns
+
+ff = df.values.ravel()
+ff
+
+v = pd.DataFrame(np.reshape(ff, (-1,len(df.columns))))
+v.columns = df.columns
+
+## Create dummy matrix
+import patsy
+# patsy.dmatrices('Dummy ~ 1 + name + reports + year', v)
+int(pd.get_dummies(v)) #, prefix=['col1', 'col2']))
+
+## Group by
+import pandas
+
+df = pd.DataFrame({'A' : ['foo', 'bar', 'foo', 'bar',
+                          'foo', 'bar', 'foo', 'foo'],
+                   'B' : ['one', 'one', 'two', 'three',
+                          'two', 'two', 'one', 'three'],
+                   'B' : ['i', 'i', 'ii', 'ii',
+                          'ii', 'ii', 'iii', 'iii'],
+                   'D' : np.random.randn(8)})
+
+grouped = df.groupby(['A', 'B', 'C'])
+
+grouped.groups
+
+for name, group in grouped:
+    print(name)
+    print(group)
+
+grouped.get_group(('foo', 'i'))
 
 
 
