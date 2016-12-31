@@ -111,26 +111,56 @@ int(pd.get_dummies(v)) #, prefix=['col1', 'col2']))
 
 ## Group by
 import pandas
+from dplython import (DplyFrame, X, select, sift, sample_frac, sample_n, head, arrange,mutate, group_by,summarize)
 
-df = pd.DataFrame({'A' : ['foo', 'bar', 'foo', 'bar',
-                          'foo', 'bar', 'foo', 'foo'],
-                   'B' : ['one', 'one', 'two', 'three',
-                          'two', 'two', 'one', 'three'],
-                   'B' : ['i', 'i', 'ii', 'ii',
-                          'ii', 'ii', 'iii', 'iii'],
+df = pd.DataFrame({'A' : ['foo', 'foo', 'foo', 'foo',
+                          'foo', 'foo', 'bar', 'bar'],
+                  'B' : ['one', 'one', 'two', 'two',
+                          'two', 'two', 'one', 'one'],
+                   'C' : ['1', '0', '0', '1',
+                          '1', '0', '1', '0'],
                    'D' : np.random.randn(8)})
 
-grouped = df.groupby(['A', 'B', 'C'])
+grouped = df.groupby(['A','B','C'])['D']
+df
+# result = df.groupby(['A', 'B', 'C'])['D'].apply(list)
 
-grouped.groups
+ke = grouped.groups.keys()
+va = grouped.groups.values()
+
+dictionary = dict(zip(ke, va))
+
+# from collections import defaultdict
+# dd = defaultdict(list)
+# foo = [
+#       {'host': 'localhost', 'db_name': 'test', 'table': 'partners'},
+#       {'host': 'localhost', 'db_name': 'test', 'table': 'users'},
+#       {'host': 'localhost', 'db_name': 'test', 'table': 'sales'},
+#       {'host': 'localhost', 'db_name': 'new', 'table': 'partners'},
+#       {'host': 'localhost', 'db_name': 'new', 'table': 'users'},
+#       {'host': 'localhost', 'db_name': 'new', 'table': 'sales'},
+# ]
+# for d in foo:
+#     dd[(d['host'], d['db_name'])].append(d)
+
+
+pd.DataFrame(d.items(), columns=['Date', 'DateValue'])
 
 for name, group in grouped:
-    print(name)
-    print(group)
+    ii = name
+    jj = group
+    print(ii)
+    print(jj)
+    
+items = grouped.items()
 
-grouped.get_group(('foo', 'i'))
 
-
+dff = DplyFrame(df)
+ds_grouped = (dff >>
+        group_by(X.A, X.B,X.C) >>
+        arrange(X.C) >>
+        sift(X.C == '1'))
+ds_grouped
 
 
 
