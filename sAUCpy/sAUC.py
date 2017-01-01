@@ -130,6 +130,28 @@ va = grouped.groups.values()
 
 dictionary = dict(zip(ke, va))
 
+########################## Split in python like in R ####################
+b = [0,1] * 5
+c = ["a", "b"]*5
+
+split(a,b)
+([1, 3, 5, 7, 9], [2, 4, 6, 8, 10])
+
+import itertools
+def split(x, *f):
+    return list(itertools.compress(x, f)), list(itertools.compress(x, (not i for i in f)))
+# If you need more general input (multiple numbers), something like the following will return an n-tuple:
+
+def split(x, f):
+    count = max(f) + 1
+    return tuple( list(itertools.compress(x, (el == i for el in f))) for i in range(count) )  
+
+split([1,2,3,4,5,6,7,8,9,10], b+c)
+
+b + c
+########################## End of Split in python like in R ####################
+
+
 # from collections import defaultdict
 # dd = defaultdict(list)
 # foo = [
