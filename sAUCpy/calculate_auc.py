@@ -69,8 +69,9 @@ class sAUCpy(object):
     return(-log((1/x)-1))
         
     # def finv(x):
-    #     return (-log(x) - 1)
-    finv = lambda x: (-log(x) - 1)
+    # return(-log((1/x)-1))
+    
+    finv = lambda x: (-log((1/x)-1))
        
     m = len(ya)
     p = len(yb)
