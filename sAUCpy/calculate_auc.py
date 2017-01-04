@@ -68,6 +68,10 @@ class sAUCpy(object):
     def finv(x):
     return(-log((1/x)-1))
         
+    # def finv(x):
+    #     return (-log(x) - 1)
+    finv = lambda x: (-log(x) - 1)
+       
     m = len(ya)
     p = len(yb)
     I = numpy.zeros(shape = (m, p))
