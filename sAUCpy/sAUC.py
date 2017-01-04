@@ -1,7 +1,7 @@
 import numpy
 
 def finv(x):
-    return (-(numpy.log(x)) - 1)
+    return(-log((1/x)-1))
 
 m = len(ya)
 p = len(yb)
