@@ -65,9 +65,10 @@ class sAUCpy(object):
         print
         "This is init."
 
-    def finv(x):
-        return (-log(x) - 1)
-        
+    # def finv(x):
+    #     return (-log(x) - 1)
+    finv = lambda x: (-log(x) - 1)
+       
     m = len(ya)
     p = len(yb)
     I = numpy.zeros(shape = (m, p))
