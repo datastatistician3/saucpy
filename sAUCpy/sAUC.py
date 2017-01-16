@@ -188,9 +188,13 @@ ds_grouped
 
 
 
+def split(x, f):
+    count = max(f) + 1
+    return tuple( list(itertools.compress(x, (el == i for el in f))) for i in range(count) )  
 
+split([1,2,3,4,5,6,7,8,9,10], [0,1,1,0,2,3,4,0,1,2])
 
-
+b + c
 
 
 
