@@ -1,12 +1,21 @@
 import numpy
+import pandas
 
-# def finv(x):
-#     return(-log((1/x)-1))
-    
-finv = lambda x: (-log((1/x)-1))
+#def finv(x):
+ #   return(-(numpy.log((1/x))-1))
+ 
+fasd = pandas.read_csv("../data/one_final.csv")
 
-m = len(ya)
-p = len(yb)
+fasd['group'] = fasd['group'].astype('category')
+fasd['x1'] = fasd['x1'].astype('category')
+fasd['x2'] = fasd['x2'].astype('category')
+
+finv = lambda x: (-(numpy.log((1/x))-1))
+za = [3,2,4,3]
+zb = [1,2,2,3]
+
+m = len(za)
+p = len(zb)
 I = numpy.zeros(shape = (m, p))
 def calculate_auc(ya, yb, data = None):
     for i in range(m):
@@ -22,21 +31,48 @@ def calculate_auc(ya, yb, data = None):
             svaryb = numpy.var(vyb)
             vhat_auchat = (svarya/m) + (svaryb/p)
             v_finv_auchat = vhat_auchat/((auchat**2)*(1-auchat)**2)
-            logitauchat = log(auchat/(1-auchat))
+            logitauchat = numpy.log(auchat/(1-auchat))
             var_logitauchat = vhat_auchat /((auchat**2)*(1-auchat)**2)
             return(var_logitauchat)
 
-ya = [3,2,4,3]
-yb = [1,2,2,3]
+calculate_auc(ya=za, yb= zb)
 
-calculate_auc(ya=ya, yb= yb)
 
-def sAUC(x, y, data):
-    assert x is not None, "Argument x (for e.g. response ~ x1 + x2) is missing."
-    assert y is not None, "Argument y (treatment group) is missing."
+response = ["y"]
+input_covariates = ["x1","x2"]
+
+#y = "group"
+treatment_group = ["group"]
+data = fasd
+
+data[response]
+
+
+#def sAUC(response, treatment_group, input_covariates, data):
+    assert response is not None, "Argument response is missing."
+    assert treatment_group is not None, "Argument treatment_group is missing."
+    assert input_covariates is not None, "Argument input_covariates group is missing. Please put covariates as list. For e.g. ['x1','x2']"
     assert data is not None, "Argument data is missing. Please, specify name of dataframe."
 
-sAUC(x=2,y=2,data=3)
+input_treatment = treatment_group
+
+print("Data are being analyzed. Please, be patient.\n\n")
+
+d = pandas.DataFrame(data)
+group_covariates = treatment_group + input_covariates
+
+grouped_d = d.groupby(group_covariates)['y']
+#grouped_d = pandas({"Count" : d.groupby(group_covariates)[response].size()}).reset_index()
+grouped_d
+#result = d.groupby(group_covariates)[response].apply(list)
+
+ke = grouped_d.groups.keys()
+va = grouped_d.groups.values()
+
+dictionary = dict(zip(ke, va))
+dictionary
+
+d.index
 
 
 from itertools import product
@@ -112,7 +148,8 @@ import patsy
 int(pd.get_dummies(v)) #, prefix=['col1', 'col2']))
 
 ## Group by
-import pandas
+import pandas as pd
+import numpy as np
 from dplython import (DplyFrame, X, select, sift, sample_frac, sample_n, head, arrange,mutate, group_by,summarize)
 
 df = pd.DataFrame({'A' : ['foo', 'foo', 'foo', 'foo',
@@ -124,18 +161,19 @@ df = pd.DataFrame({'A' : ['foo', 'foo', 'foo', 'foo',
                    'D' : np.random.randn(8)})
 
 grouped = df.groupby(['A','B','C'])['D']
-df
+grouped
+
 # result = df.groupby(['A', 'B', 'C'])['D'].apply(list)
 
 ke = grouped.groups.keys()
 va = grouped.groups.values()
 
 dictionary = dict(zip(ke, va))
-
+dictionary
 ########################## Split in python like in R ####################
-b = [0,1] * 5
-c = ["a", "b"]*5
-
+a = [0,1] * 2
+b = [1,2]*2
+a
 split(a,b)
 ([1, 3, 5, 7, 9], [2, 4, 6, 8, 10])
 
