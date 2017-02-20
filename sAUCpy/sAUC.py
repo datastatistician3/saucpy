@@ -37,7 +37,6 @@ def calculate_auc(ya, yb, data = None):
 
 calculate_auc(ya=za, yb= zb)
 
-
 response = ["y"]
 input_covariates = ["x1","x2"]
 
@@ -46,6 +45,13 @@ treatment_group = ["group"]
 data = fasd
 
 data[response]
+
+
+#split
+#get levels
+#expand.grid
+#model.atrix
+
 
 
 #def sAUC(response, treatment_group, input_covariates, data):
@@ -59,20 +65,43 @@ input_treatment = treatment_group
 print("Data are being analyzed. Please, be patient.\n\n")
 
 d = pandas.DataFrame(data)
-group_covariates = treatment_group + input_covariates
-
+group_covariates = input_treatment + input_covariates
+d[group_covariates]
 grouped_d = d.groupby(group_covariates)['y']
 #grouped_d = pandas({"Count" : d.groupby(group_covariates)[response].size()}).reset_index()
-grouped_d
-#result = d.groupby(group_covariates)[response].apply(list)
+#result = d.groupby(group_covariates).apply(list)
+
+
 
 ke = grouped_d.groups.keys()
 va = grouped_d.groups.values()
 
 dictionary = dict(zip(ke, va))
-dictionary
 
-d.index
+for key, value in sorted(dictionary.items()):
+    print(key)
+    df_dict = ([d[response].ix[value]])
+
+
+
+# get levels
+cat_columns = d.select_dtypes(['category']).columns
+
+cat_columns
+
+d[cat_columns] = d[cat_columns].apply(lambda x: x.cat.categories)
+
+d['x2'].cat.categories
+d[input_covariates].apply(lambda x: x.cat.codes)
+
+cat.categories
+d[cat_columns]
+
+
+
+pandas.Factor(3)
+
+
 
 
 from itertools import product
@@ -160,11 +189,11 @@ df = pd.DataFrame({'A' : ['foo', 'foo', 'foo', 'foo',
                           '1', '0', '1', '0'],
                    'D' : np.random.randn(8)})
 
-grouped = df.groupby(['A','B','C'])['D']
+grouped = df.groupby(['A','B','C','D'])
 grouped
 
-# result = df.groupby(['A', 'B', 'C'])['D'].apply(list)
-
+result = df.groupby(['A', 'B', 'C'])['D'].apply(list)
+result
 ke = grouped.groups.keys()
 va = grouped.groups.values()
 
@@ -182,13 +211,20 @@ def split(x, *f):
     return list(itertools.compress(x, f)), list(itertools.compress(x, (not i for i in f)))
 # If you need more general input (multiple numbers), something like the following will return an n-tuple:
 
+split(d, input_covariates)
+    
+    
 def split(x, f):
     count = max(f) + 1
     return tuple( list(itertools.compress(x, (el == i for el in f))) for i in range(count) )  
 
 split([1,2,3,4,5,6,7,8,9,10], b+c)
 
-b + c
+split([1,2,3,4,5,6,7,8,9,10], [0,1,1,0,2,3,4,0,1,2])
+
+split(d, group_covariates)
+
+
 ########################## End of Split in python like in R ####################
 
 
@@ -232,7 +268,6 @@ def split(x, f):
 
 split([1,2,3,4,5,6,7,8,9,10], [0,1,1,0,2,3,4,0,1,2])
 
-b + c
 
 
 
