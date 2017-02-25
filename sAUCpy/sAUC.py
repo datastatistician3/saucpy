@@ -53,7 +53,6 @@ data[response]
 #model.atrix
 
 
-
 #def sAUC(response, treatment_group, input_covariates, data):
     assert response is not None, "Argument response is missing."
     assert treatment_group is not None, "Argument treatment_group is missing."
@@ -72,15 +71,89 @@ grouped_d = d.groupby(group_covariates)['y']
 #result = d.groupby(group_covariates).apply(list)
 
 
-
 ke = grouped_d.groups.keys()
 va = grouped_d.groups.values()
 
 dictionary = dict(zip(ke, va))
 
+dictionary
+
 for key, value in sorted(dictionary.items()):
+    key_list = list(key)
     print(key)
-    df_dict = ([d[response].ix[value]])
+    #print(zip(key, value))
+    df_dict = ([d[response].ix[value]][0])
+    
+    print(df_dict)
+#    print(df_dict.columns)
+    for i in df_dict:
+        for j in 
+        print(df_dict[i] > df_dict[i+1])
+        
+
+
+
+#    for i in df_dict:
+#    print((df_dict))
+    #print([d[response].ix[value]])
+#    for i in range(len(dictionaryTry)):
+#    print(i)
+#    dictionaryTry[list_names[i]] = dictionaryTry.pop('1',0)
+    print(df_dict.keys())
+    
+#    df_dict = (dict(df_dict[0]))
+    
+#    print(dict([[d[response].ix[value]][0]['y']].pop(0)))
+
+
+
+#    
+#            
+#    super_dict = {}
+#    for d in df_dict:
+#        for k, v in d.iteritems():  # d.items() in Python 3+
+#            super_dict.setdefault(k, []).append(v)
+#        
+#    
+#
+
+    
+    #d = dict([("age", 25)])
+    #final_dict = dict(key,df_dict[0]['y'])
+#    final_dict = dict(key, ([d[response].ix[value]])[0]['y'])
+#
+#    print(final_dict)
+    
+
+print((df_dict))
+    
+
+    
+    
+hat = (dict(df_dict[0]))
+
+print(len(df_dict))
+
+dictionaryTry = { '1': 'one', '1':'two', '1':'three' }
+list_names = ["hi", "hello","hehe"]
+
+for i in dictionaryTry.keys():
+    print(i)
+
+
+for i in range(len(dictionaryTry)):
+    print(i)
+    dictionaryTry[list_names[i]] = dictionaryTry.pop('1',0)
+    
+dictionaryTry
+
+dictionaryTry
+
+for i in df_dict.keys():
+    print(df_dict)
+
+ dictionary.pop(1)
+#dictionary
 
 
 
@@ -89,12 +162,20 @@ cat_columns = d.select_dtypes(['category']).columns
 
 cat_columns
 
-d[cat_columns] = d[cat_columns].apply(lambda x: x.cat.categories)
+d[cat_columns] = d[cat_columns].apply(lambda x: x.cat.codes)
 
-d['x2'].cat.categories
+input_covariates
+
+def get_levels(x):
+    return(x.cat.codes)
+
+d['x1'].apply(get_levels)
+
+d[['x1','x2']].cat.codes
+ 
 d[input_covariates].apply(lambda x: x.cat.codes)
 
-cat.categories
+input_covariates
 d[cat_columns]
 
 
