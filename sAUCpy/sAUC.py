@@ -37,7 +37,7 @@ def calculate_auc(ya, yb, data = None):
 
 calculate_auc(ya=za, yb= zb)
 
-response = ["y"]
+response = list("y")
 input_covariates = ["x1","x2"]
 
 #y = "group"
@@ -54,10 +54,10 @@ data[response]
 
 
 #def sAUC(response, treatment_group, input_covariates, data):
-    assert response is not None, "Argument response is missing."
-    assert treatment_group is not None, "Argument treatment_group is missing."
-    assert input_covariates is not None, "Argument input_covariates group is missing. Please put covariates as list. For e.g. ['x1','x2']"
-    assert data is not None, "Argument data is missing. Please, specify name of dataframe."
+#    assert response is not None, "Argument response is missing."
+#    assert treatment_group is not None, "Argument treatment_group is missing."
+#    assert input_covariates is not None, "Argument input_covariates group is missing. Please put covariates as list. For e.g. ['x1','x2']"
+#    assert data is not None, "Argument data is missing. Please, specify name of dataframe."
 
 input_treatment = treatment_group
 
@@ -67,9 +67,13 @@ d = pandas.DataFrame(data)
 group_covariates = input_treatment + input_covariates
 d[group_covariates]
 grouped_d = d.groupby(group_covariates)['y']
+
+for i in grouped_d:
+    print(type(i))
 #grouped_d = pandas({"Count" : d.groupby(group_covariates)[response].size()}).reset_index()
 #result = d.groupby(group_covariates).apply(list)
-
+for i in range(int(0.5*len(grouped_d))):
+    print(grouped_d)
 
 ke = grouped_d.groups.keys()
 va = grouped_d.groups.values()
@@ -78,13 +82,37 @@ dictionary = dict(zip(ke, va))
 
 dictionary
 
-for key, value in sorted(dictionary.items()):
+for key, value in (sorted(dictionary.items())):
     key_list = list(key)
     print(key)
-    #print(zip(key, value))
-    df_dict = ([d[response].ix[value]][0])
+    df_dict = dict([d[response].ix[value]][0])
+    print((df_dict))
     
-    print(df_dict)
+    for i in df_dict:
+        print(merge_dicts(i))
+        
+        
+def merge_dicts(*dict_args):
+    """
+    Given any number of dicts, shallow copy and merge into a new dict,
+    precedence goes to key value pairs in latter dicts.
+    """
+    result = {}
+    for dictionary in dict_args:
+        result.update(dictionary)
+    return result
+
+x = {'a': 1, 'b': 2}
+y = {'b': 3, 'b': 4}
+
+merge_dicts(x,y)
+
+
+
+
+ 
+    
+    print(zip(key, df_dict))
 #    print(df_dict.columns)
     for i in df_dict:
         for j in 
