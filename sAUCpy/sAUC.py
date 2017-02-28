@@ -68,19 +68,31 @@ group_covariates = input_treatment + input_covariates
 d[group_covariates]
 grouped_d = d.groupby(group_covariates)['y']
 
-for i in grouped_d:
-    print(type(i))
-#grouped_d = pandas({"Count" : d.groupby(group_covariates)[response].size()}).reset_index()
-#result = d.groupby(group_covariates).apply(list)
-for i in range(int(0.5*len(grouped_d))):
-    print(grouped_d)
-
 ke = grouped_d.groups.keys()
 va = grouped_d.groups.values()
 
 dictionary = dict(zip(ke, va))
 
-dictionary
+from collections import OrderedDict
+res = OrderedDict()
+for v, k in dictionary:
+    if k in res:
+        res[k].append(v)
+    else: res[k] = [v]
+    
+
+[{'type':k, 'items':v} for k,v in res.items()]
+
+
+from collections import defaultdict
+res = defaultdict(list)
+for v, k in dictionary: res[k].append(v)
+
+#grouped_d = pandas({"Count" : d.groupby(group_covariates)[response].size()}).reset_index()
+#result = d.groupby(group_covariates).apply(list)
+for i in range(int(0.5*len(grouped_d))):
+    print(grouped_d)
+
 
 for key, value in (sorted(dictionary.items())):
     key_list = list(key)
@@ -88,29 +100,12 @@ for key, value in (sorted(dictionary.items())):
     df_dict = dict([d[response].ix[value]][0])
     print((df_dict))
     
+    
+
     for i in df_dict:
         print(merge_dicts(i))
         
-        
-def merge_dicts(*dict_args):
-    """
-    Given any number of dicts, shallow copy and merge into a new dict,
-    precedence goes to key value pairs in latter dicts.
-    """
-    result = {}
-    for dictionary in dict_args:
-        result.update(dictionary)
-    return result
 
-x = {'a': 1, 'b': 2}
-y = {'b': 3, 'b': 4}
-
-merge_dicts(x,y)
-
-
-
-
- 
     
     print(zip(key, df_dict))
 #    print(df_dict.columns)
@@ -153,15 +148,6 @@ merge_dicts(x,y)
 #    print(final_dict)
     
 
-print((df_dict))
-    
-
-    
-    
-hat = (dict(df_dict[0]))
-
-print(len(df_dict))
-
 dictionaryTry = { '1': 'one', '1':'two', '1':'three' }
 list_names = ["hi", "hello","hehe"]
 
@@ -173,9 +159,6 @@ for i in range(len(dictionaryTry)):
     print(i)
     dictionaryTry[list_names[i]] = dictionaryTry.pop('1',0)
     
-dictionaryTry
-
-dictionaryTry
 
 for i in df_dict.keys():
     print(df_dict)
@@ -205,12 +188,6 @@ d[input_covariates].apply(lambda x: x.cat.codes)
 
 input_covariates
 d[cat_columns]
-
-
-
-pandas.Factor(3)
-
-
 
 
 from itertools import product
