@@ -1,41 +1,47 @@
 import numpy
+from numpy import log
 import pandas
 
 #def finv(x):
- #   return(-(numpy.log((1/x))-1))
- 
+   # return(-log((1/x)-1))
+
 fasd = pandas.read_csv("../data/one_final.csv")
 
 fasd['group'] = fasd['group'].astype('category')
 fasd['x1'] = fasd['x1'].astype('category')
 fasd['x2'] = fasd['x2'].astype('category')
 
-finv = lambda x: (-(numpy.log((1/x))-1))
-za = [3,2,4,3]
-zb = [1,2,2,3]
+finv = lambda x: (-(numpy.log((1/x)-1)))
+ya = [0, -2, -1, -3, -2, -1,  0,  0,  1,  1,  1,  1,  1,  1,  1,  1 , 1 , 1,  1 , 1 , 1 , 1,  1, 1,  1 , 1 , 1,  1 , 1, 1 , 1 , 1]
+yb = [2, 0, 4, 0, 2, 2, 2, 2, 1.5, 1, 1, 1, 1, 1, 1, 1]
+finv(0.6)
 
-m = len(za)
-p = len(zb)
-I = numpy.zeros(shape = (m, p))
-def calculate_auc(ya, yb, data = None):
+def calculate_auc(ya, yb):
+    m = len(ya)
+    p = len(yb)
+    I = numpy.zeros(shape = (m, p))
     for i in range(m):
         for j in range(p):
-            if ya[i] > yb[j]: I[i,j] = 1
-            elif ya[i] == yb[j]: I[i,j] = 0.5
-            else: I[i,j] = 0
-            auchat = numpy.mean(I)
-            finvhat = finv(auchat)
-            vya = numpy.apply_along_axis(numpy.mean, 1, I)
-            vyb = numpy.apply_along_axis(numpy.mean, 0, I)
-            svarya = numpy.var(vya)
-            svaryb = numpy.var(vyb)
-            vhat_auchat = (svarya/m) + (svaryb/p)
-            v_finv_auchat = vhat_auchat/((auchat**2)*(1-auchat)**2)
-            logitauchat = numpy.log(auchat/(1-auchat))
-            var_logitauchat = vhat_auchat /((auchat**2)*(1-auchat)**2)
-            return(var_logitauchat)
+            if ya[i] > yb[j]: 
+                I[i,j] = 1
+            elif ya[i] == yb[j]: 
+                I[i,j] = 0.5
+            else: 
+                I[i,j] = 0
+    print(I)
+    auchat = numpy.mean(I)
+    finvhat = finv(auchat)
+    vya = numpy.apply_along_axis(numpy.mean, 1, I)
+    vyb = numpy.apply_along_axis(numpy.mean, 0, I)
+    svarya = numpy.var(vya)
+    svaryb = numpy.var(vyb)
+    vhat_auchat = (svarya/m) + (svaryb/p)
+    v_finv_auchat = vhat_auchat/((auchat**2)*(1-auchat)**2)
+    logitauchat = numpy.log(auchat/(1-auchat))
+    var_logitauchat = vhat_auchat /((auchat**2)*(1-auchat)**2)
+    return(var_logitauchat, logitauchat)
 
-calculate_auc(ya=za, yb= zb)
+calculate_auc(ya=ya, yb= yb)
 
 response = list("y")
 input_covariates = ["x1","x2"]
@@ -45,7 +51,6 @@ treatment_group = ["group"]
 data = fasd
 
 data[response]
-
 
 #split
 #get levels
@@ -67,6 +72,66 @@ d = pandas.DataFrame(data)
 group_covariates = input_treatment + input_covariates
 d[group_covariates]
 grouped_d = d.groupby(group_covariates)['y']
+
+
+print(grouped_d.groups[keys])
+
+keys = list(sorted(grouped_d.groups.keys()))
+dict_df = {}
+for index in range(len(keys)):
+    print(index)
+    #g1 = d.ix[grouped_d.groups[keys[index]]]
+    #g2 = d.ix[grouped_d.groups[keys[index + 1]]]
+    #g3 = d.ix[grouped_d.groups[keys[index + 2]]]
+    #g4 = d.ix[grouped_d.groups[keys[index + 3]]]
+    #g5 = d.ix[grouped_d.groups[keys[index + 4]]]
+    #g6 = d.ix[grouped_d.groups[keys[index + 5]]]
+    #g7 = d.ix[grouped_d.groups[keys[index + 6]]]
+    #g8 = d.ix[grouped_d.groups[keys[index + 7]]]
+    dict_df[index] = d.ix[grouped_d.groups[keys[index]]]
+    
+for i  in range(7) :
+    print(d.ix[grouped_d.groups[keys[i]]])
+dict_df[1] 
+    
+#dict_for_df = {}
+#for i in ('a','b','c','d'):    # Don't use "id" as a counter; it's a python function
+ #   x = numpy.random.random()        # first value
+  #  y = numpy.random.random()        # second value
+   # dict_for_df[i] = [x,y]
+    
+#dict_for_df['a'] 
+
+#dict_for_df = {}
+#for i in range(len(keys)):    
+ #   print(i)     
+  #  dict_for_df[i] = d.ix[grouped_d.groups[keys[i]]]
+
+dict_df[4].iloc[:,0].tolist()
+
+v1 = (calculate_auc(dict_df[0].iloc[:,0].tolist(),dict_df[4].iloc[:,0].tolist()))
+my_1, my_card_1 = v1
+
+v2 = (calculate_auc(dict_df[1].iloc[:,0].tolist(),dict_df[5].iloc[:,0].tolist()))
+my_2, my_card_2 = v2
+
+v3 = (calculate_auc(dict_df[2].iloc[:,0].tolist(),dict_df[6].iloc[:,0].tolist()))
+my_3, my_card_3 = v3
+
+v4 = (calculate_auc(dict_df[3].iloc[:,0].tolist(),dict_df[7].iloc[:,0].tolist()))
+my_4, my_card_4 = v4
+
+var_logitauchat = [my_1, my_2, my_3, my_4 ]
+gamma1 = [my_card_1, my_card_2, my_card_3, my_card_4]
+
+
+
+
+
+
+
+
+
 
 ke = grouped_d.groups.keys()
 va = grouped_d.groups.values()
@@ -100,90 +165,99 @@ for key, value in (sorted(dictionary.items())):
     df_dict = dict([d[response].ix[value]][0])
     print((df_dict))
     
-    
-
-    for i in df_dict:
-        print(merge_dicts(i))
-        
-
-    
-    print(zip(key, df_dict))
-#    print(df_dict.columns)
-    for i in df_dict:
-        for j in 
-        print(df_dict[i] > df_dict[i+1])
-        
-
-
-
 #    for i in df_dict:
 #    print((df_dict))
     #print([d[response].ix[value]])
 #    for i in range(len(dictionaryTry)):
 #    print(i)
-#    dictionaryTry[list_names[i]] = dictionaryTry.pop('1',0)
-    print(df_dict.keys())
-    
+#    dictionaryTry[list_names[i]] = dictionaryTry.pop('1',0)    
 #    df_dict = (dict(df_dict[0]))
     
 #    print(dict([[d[response].ix[value]][0]['y']].pop(0)))
-
-
-
-#    
-#            
+         
 #    super_dict = {}
 #    for d in df_dict:
 #        for k, v in d.iteritems():  # d.items() in Python 3+
 #            super_dict.setdefault(k, []).append(v)
-#        
-#    
-#
-
     
     #d = dict([("age", 25)])
     #final_dict = dict(key,df_dict[0]['y'])
 #    final_dict = dict(key, ([d[response].ix[value]])[0]['y'])
 #
 #    print(final_dict)
-    
-
-dictionaryTry = { '1': 'one', '1':'two', '1':'three' }
-list_names = ["hi", "hello","hehe"]
-
-for i in dictionaryTry.keys():
-    print(i)
-
-
-for i in range(len(dictionaryTry)):
-    print(i)
-    dictionaryTry[list_names[i]] = dictionaryTry.pop('1',0)
-    
-
-for i in df_dict.keys():
-    print(df_dict)
-
- dictionary.pop(1)
-#dictionary
-
-
-
+       
 # get levels
 cat_columns = d.select_dtypes(['category']).columns
 
-cat_columns
+#d[cat_columns] = d[cat_columns].apply(lambda x: x.cat.codes)
 
-d[cat_columns] = d[cat_columns].apply(lambda x: x.cat.codes)
+x1_levels = d['x1'].cat.categories
+x2_levels = d['x2'].cat.categories
 
-input_covariates
+#matrix = numpy.concatenate((d['x1'].cat.categories, d['x2'].cat.categories), axis=0)
 
-def get_levels(x):
-    return(x.cat.codes)
+ds_expand = (pandas.DataFrame(expand_grid(x1_levels, x2_levels)))
+ds_expand['y'] = var_logitauchat
 
-d['x1'].apply(get_levels)
+ds_expand['Var1'] = ds_expand['Var1'].astype('category')
+ds_expand['Var2'] = ds_expand['Var2'].astype('category')
+ds_expand.sort('Var2', ascending = [True])
 
-d[['x1','x2']].cat.codes
- 
+from patsy import *
+
+Z = pandas.DataFrame(dmatrix("Var1+Var2", ds_expand))
+Z.columns = ['intercept', 'x1', 'x2']
+Z.sort('x2', ascending = [True])
+
+tau  =  numpy.diag([1/i for i in var_logitauchat])
+
+from numpy.linalg import inv
+ztauz = inv(Z.T.dot(tau).dot(Z))
+
+var_betas = numpy.diag(ztauz)
+std_error = numpy.sqrt(var_betas)
+betas = ztauz.dot(Z.T).dot(tau).dot(gamma1)
+
+from scipy.stats import norm
+threshold = norm.ppf(0.975)
+
+lo = betas - threshold*std_error
+up = betas + threshold*std_error
+ci = numpy.vstack((betas,lo,up)).T
+
+
+
+x = numpy.matrix( ((2,3), (3, 5)) )
+y = numpy.matrix( ((1,2), (5, -1)) )
+x * y
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 d[input_covariates].apply(lambda x: x.cat.codes)
 
 input_covariates
@@ -215,7 +289,7 @@ def expand_grid(*itrs):
 a = [1,2,3]
 b = [5,7,9]
 c = [1,3]
-pd.DataFrame(expand_grid(a, b, c))
+pandas.DataFrame(expand_grid(a, b, c))
 
 
 df=pd.DataFrame({"Animal":["dog","dolphin","chicken","ant","spider"],
