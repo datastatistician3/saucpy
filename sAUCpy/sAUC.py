@@ -117,9 +117,7 @@ def sAUC(response, treatment_group, input_covariates, data):
     
     lo = betas - threshold*std_error
     up = betas + threshold*std_error
-    
-#    z_scores = betas / std_error
-    
+       
     p_values = (norm.cdf(-numpy.abs(betas), loc = 0, scale = std_error))*2
     
     results = DataFrame(numpy.vstack((betas,std_error, lo,up,p_values)).T)
