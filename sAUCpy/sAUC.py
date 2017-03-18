@@ -44,11 +44,13 @@ def expand_grid(*itrs):
         for x in new_product] 
             for i in range(len(itrs))}
 
+expand_grid([1,2,3],[2,1])
+
 def sAUC(response, treatment_group, input_covariates, data):
     assert response is not None, "Argument response is missing."
     assert treatment_group is not None, "Argument treatment_group is missing."
-    assert input_covariates is not None, "Argument input_covariates group is missing. Please put covariates as list. For e.g. ['x1','x2']"
-    assert data is not None, "Argument data is missing. Please, specify name of dataframe."
+    assert input_covariates is not None, "Argument input_covariates is missing. Please put covariates as list. For e.g. ['x1','x2']"
+    assert data is not None, "Argument data is missing. Please, specify name of pandas DataFrame."
    
     print("Data are being analyzed. Please, be patient.\n\n")
     
