@@ -63,7 +63,7 @@ def sAUC(response, treatment_group, input_covariates, data):
     keys = list(sorted(grouped_d.groups.keys()))
     
     dict_df = {}
-    my_1 = {}
+    auchat_container = {}
     my_card_1 = {}
     for i in range(len(keys)):
         print(i)
@@ -71,9 +71,9 @@ def sAUC(response, treatment_group, input_covariates, data):
         
     for j in range(int(0.5 * len(dict_df))):
         print(j)
-        my_1[j], my_card_1[j] = (calculate_auc(dict_df[j].loc[:,response].tolist(),dict_df[j + int(0.5 * len(dict_df))].loc[:,response].tolist()))
+        auchat_container[j], my_card_1[j] = (calculate_auc(dict_df[j].loc[:,response].tolist(),dict_df[j + int(0.5 * len(dict_df))].loc[:,response].tolist()))
     
-    var_logitauchat = [ v for v in my_1.values() ]
+    var_logitauchat = [ v for v in auchat_container.values() ]
     gamma1 = [ v for v in my_card_1.values() ]
            
     # get levels
