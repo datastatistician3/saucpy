@@ -4,12 +4,6 @@ from patsy import dmatrix
 from scipy.stats import norm
 from itertools import product
 
-finv = lambda x: (-(numpy.log((1/x)-1)))
-
-ya = [0, -2, -1, -3, -2, -1,  0,  0,  1,  1,  1,  1,  1,  1,  1,  1 , 1 , 1,  1 , 1 , 1 , 1,  1, 1,  1 , 1 , 1,  1 , 1, 1 , 1 , 1]
-yb = [2, 0, 4, 0, 2, 2, 2, 2, 1.5, 1, 1, 1, 1, 1, 1, 1]
-finv(0.6)
-
 def calculate_auc(ya, yb):
     m = len(ya)
     p = len(yb)
@@ -22,7 +16,7 @@ def calculate_auc(ya, yb):
                 I[i,j] = 0.5
             else: 
                 I[i,j] = 0
-    print(I)
+    #finv = lambda x: (-(numpy.log((1/x)-1)))
     auchat = numpy.mean(I)
     #finvhat = finv(auchat)
     vya = numpy.apply_along_axis(numpy.mean, 1, I)
@@ -35,7 +29,7 @@ def calculate_auc(ya, yb):
     var_logitauchat = vhat_auchat /((auchat**2)*(1-auchat)**2)
     return([var_logitauchat, logitauchat])
 
-print(calculate_auc(ya=ya, yb= yb))
+print(calculate_auc(ya=[2,0.4,3.6,2.41], yb= [1.2,0.4,1.6,1.5]))
 
 #expand.grid
 def expand_grid(*itrs):
