@@ -60,11 +60,11 @@ def sAUC(response, treatment_group, input_covariates, data):
     auchat_container = {}
     my_card_1 = {}
     for i in range(len(keys)):
-        print(i)
+        #print(i)
         dict_df[i] = d.ix[grouped_d.groups[keys[i]]]    
         
     for j in range(int(0.5 * len(dict_df))):
-        print(j)
+        #print(j)
         auchat_container[j], my_card_1[j] = (calculate_auc(dict_df[j].loc[:,response].tolist(),dict_df[j + int(0.5 * len(dict_df))].loc[:,response].tolist()))
     
     var_logitauchat = [ v for v in auchat_container.values() ]
@@ -123,7 +123,7 @@ def sAUC(response, treatment_group, input_covariates, data):
     return(results)
 
 # Data analysis
-fasd = read_csv("../data/one_final.csv")
+fasd = read_csv("../data/fasd.csv")
 fasd['group'] = fasd['group'].astype('category')
 fasd['x1']    = fasd['x1'].astype('category')
 fasd['x2']    = fasd['x2'].astype('category')
@@ -134,5 +134,7 @@ ds['x1']    = ds['x1'].astype('category')
 ds['x2']    = ds['x2'].astype('category')
 ds['x3']    = ds['x3'].astype('category')
 
+sAUC(response = "y", treatment_group = ["group"], input_covariates = ["x1"], data = fasd)
 sAUC(response = "y", treatment_group = ["group"], input_covariates = ["x1","x2"], data = fasd)
+
 sAUC(response = "y", treatment_group = ["group"], input_covariates = ["x1","x2", "x3"], data = ds)
