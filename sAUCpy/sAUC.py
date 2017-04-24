@@ -40,12 +40,17 @@ def expand_grid(*itrs):
 
 expand_grid([1,2,3],[2,1])
 
+response = "y"
+treatment_group = ["group"]
+input_covariates = ["x1","x2"]
+data = fasd
+
 def sAUC(response, treatment_group, input_covariates, data):
     assert response is not None, "Argument response is missing."
     assert treatment_group is not None, "Argument treatment_group is missing."
     assert input_covariates is not None, "Argument input_covariates is missing. Please put covariates as list. For e.g. ['x1','x2']"
     assert data is not None, "Argument data is missing. Please, specify name of pandas DataFrame."
-   
+       
     print("Data are being analyzed. Please, be patient.\n\n")
     
     d = DataFrame(data)
@@ -54,7 +59,7 @@ def sAUC(response, treatment_group, input_covariates, data):
     #split
     grouped_d = d.groupby(group_covariates)[response]
     
-    keys = list(sorted(grouped_d.groups.keys()))
+    keys = list((grouped_d.groups.keys()))
     
     dict_df = {}
     auchat_container = {}
@@ -64,19 +69,26 @@ def sAUC(response, treatment_group, input_covariates, data):
         dict_df[i] = d.ix[grouped_d.groups[keys[i]]]    
         
     for j in range(int(0.5 * len(dict_df))):
-        #print(j)
+        print(j)
         auchat_container[j], my_card_1[j] = (calculate_auc(dict_df[j].loc[:,response].tolist(),dict_df[j + int(0.5 * len(dict_df))].loc[:,response].tolist()))
     
     var_logitauchat = [ v for v in auchat_container.values() ]
     gamma1 = [ v for v in my_card_1.values() ]
            
     # get levels
+    df_keys = DataFrame(keys)
+    df_keys.columns = group_covariates   
+    ds_only_covariates = df_keys[input_covariates]
     
-    ds_levels = {}
-    for i in input_covariates:
-        ds_levels[i] = (d[i].cat.categories)
-      
-    ds_expand = (DataFrame(expand_grid(*ds_levels.values())))
+    select_row= int(0.5*len(ds_only_covariates))
+    
+    ds_expand = ds_only_covariates[:select_row]
+    
+    #ds_levels = {}
+    #for i in input_covariates:
+     #   ds_levels[i] = (d[i].cat.categories)
+    
+    #ds_expand = (DataFrame(expand_grid(*ds_levels.values())))
     
     def convert_to_factor(df):
         df = DataFrame(df)
@@ -85,7 +97,7 @@ def sAUC(response, treatment_group, input_covariates, data):
         return(df)
             
     ds_expand = convert_to_factor(ds_expand)
-    ds_expand.columns = input_covariates
+    #ds_expand.columns = input_covariates
     
     var_list = '+'.join(input_covariates)
     
