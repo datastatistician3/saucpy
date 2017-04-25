@@ -40,11 +40,6 @@ def expand_grid(*itrs):
 
 expand_grid([1,2,3],[2,1])
 
-response = "y"
-treatment_group = ["group"]
-input_covariates = ["x1","x2"]
-data = fasd
-
 def sAUC(response, treatment_group, input_covariates, data):
     assert response is not None, "Argument response is missing."
     assert treatment_group is not None, "Argument treatment_group is missing."
@@ -80,7 +75,7 @@ def sAUC(response, treatment_group, input_covariates, data):
     df_keys.columns = group_covariates   
     ds_only_covariates = df_keys[input_covariates]
     
-    select_row= int(0.5*len(ds_only_covariates))
+    select_row = int(0.5*len(ds_only_covariates))
     
     ds_expand = ds_only_covariates[:select_row]
     
