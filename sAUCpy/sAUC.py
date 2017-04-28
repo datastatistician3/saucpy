@@ -29,7 +29,7 @@ def calculate_auc(ya, yb):
     var_logitauchat = vhat_auchat /((auchat**2)*(1-auchat)**2)
     return([var_logitauchat, logitauchat])
 
-print(calculate_auc(ya=[2,0.4,3.6,2.41], yb= [1.2,0.4,1.6,1.5]))
+#print(calculate_auc(ya=[2,0.4,3.6,2.41], yb= [1.2,0.4,1.6,1.5]))
 
 #expand.grid
 def expand_grid(*itrs):
@@ -64,7 +64,7 @@ def sAUC(response, treatment_group, input_covariates, data):
         dict_df[i] = d.ix[grouped_d.groups[keys[i]]]    
         
     for j in range(int(0.5 * len(dict_df))):
-        print(j)
+        #print(j)
         auchat_container[j], my_card_1[j] = (calculate_auc(dict_df[j].loc[:,response].tolist(),dict_df[j + int(0.5 * len(dict_df))].loc[:,response].tolist()))
     
     var_logitauchat = [ v for v in auchat_container.values() ]
