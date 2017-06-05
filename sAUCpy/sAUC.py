@@ -61,7 +61,7 @@ def sAUC(response, treatment_group, input_covariates, data):
     my_card_1 = {}
     for i in range(len(keys)):
         #print(i)
-        dict_df[i] = d.ix[grouped_d.groups[keys[i]]]    
+        dict_df[i] = d.loc[grouped_d.groups[keys[i]]]    
         
     for j in range(int(0.5 * len(dict_df))):
         #print(j)
