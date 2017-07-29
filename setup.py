@@ -24,7 +24,7 @@ def grep(attrname):
 file_text = read(fpath('sAUCpy/__init__.py'))
 
 setup(
-    name='sAUCpy',
+    name='saucpy',
     version=grep('__version__'),
     description='Perform AUC analyses with discrete covariates and a semi-parametric estimation',
     long_description=read(fpath('README.rst')),
@@ -32,7 +32,7 @@ setup(
     author='Som B. Bohora',
     author_email="energeticsom@gmail.com",
     license='Apache 2.0',
-    packages=['sAUCpy'],
+    packages=['saucpy'],
     zip_safe=False,
     install_requires=[
         'python-dateutil'
