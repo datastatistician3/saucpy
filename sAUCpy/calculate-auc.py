@@ -65,9 +65,9 @@ class sAUCpy(object):
         print
         "This is init."
 
-    def finv(x):
-    return(-log((1/x)-1))
-        
+    # def finv(x):
+    # return(-log((1/x)-1))
+    #
     # def finv(x):
     # return(-log((1/x)-1))
     

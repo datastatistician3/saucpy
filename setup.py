@@ -7,6 +7,7 @@ try:
 except ImportError:
     from distutils.core import setup
 
+
 def fpath(name):
     return os.path.join(os.path.dirname(__file__), name)
 
@@ -28,14 +29,19 @@ setup(
     version=grep('__version__'),
     description='Perform AUC analyses with discrete covariates and a semi-parametric estimation',
     long_description=read(fpath('README.rst')),
-    url='https://github.com/sbohora/sAUCpy/',
+    url='https://github.com/sbohora/saucpy/',
     author='Som B. Bohora',
     author_email="energeticsom@gmail.com",
     license='Apache 2.0',
     packages=['saucpy'],
     zip_safe=False,
     install_requires=[
-        'python-dateutil'
+        'python-dateutil',
+        'numpy',
+        'pandas',
+        'patsy',
+        'scipy',
+        'itertools'
     ],
     test_suite="tests",
     classifiers=[
