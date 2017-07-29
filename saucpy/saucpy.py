@@ -1,10 +1,9 @@
 import numpy
-from pandas import DataFrame, read_csv
+from pandas import DataFrame
 from patsy import dmatrix
 from scipy.stats import norm
-from itertools import product
 
-class sAUCpy(object):
+class sAUC(object):
     def calculate_auc(ya, yb):
         m = len(ya)
         p = len(yb)
@@ -31,17 +30,24 @@ class sAUCpy(object):
         return([var_logitauchat, logitauchat])
 
     #print(calculate_auc(ya=[2,0.4,3.6,2.41], yb= [1.2,0.4,1.6,1.5]))
-
+        
     # expand.grid
     def expand_grid(*itrs):
+        def product(*args, **kwds):
+            pools = map(tuple, args) * kwds.get('repeat', 1)
+            result = [[]]
+            for pool in pools:
+                result = [x+[y] for x in result for y in pool]
+                for prod in result:
+                    yield tuple(prod)
         new_product = list(product(*itrs))
         return {'Var{}'.format(i + 1): [x[i]
-                                        for x in new_product]
+                    for x in new_product]
                 for i in range(len(itrs))}
 
-    expand_grid([1, 2, 3], [2, 1])
+#    expand_grid([1, 2, 3], [2, 1])
 
-    def sAUC(response, treatment_group, input_covariates, data):
+    def semiparametricAUC(response, treatment_group, input_covariates, data):
         assert response is not None, "Argument response is missing."
         assert treatment_group is not None, "Argument treatment_group is missing."
         assert input_covariates is not None, "Argument input_covariates is missing. Please put covariates as list. For e.g. ['x1','x2']"

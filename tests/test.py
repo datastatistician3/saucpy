@@ -1,5 +1,6 @@
 from pandas import read_csv
-from saucpy import sAUCpy
+from saucpy import sAUC
+#import saucpy
 
 # Data analysis
 fasd = read_csv("../data/fasd.csv")
@@ -13,6 +14,6 @@ ds['x1']    = ds['x1'].astype('category')
 ds['x2']    = ds['x2'].astype('category')
 ds['x3']    = ds['x3'].astype('category')
 
-sAUCpy.sAUC(response = "y", treatment_group = ["group"], input_covariates = ["x1"], data = fasd)
-sAUCpy.sAUC(response = "y", treatment_group = ["group"], input_covariates = ["x1","x2"], data = fasd)
-sAUCpy.sAUC(response = "y", treatment_group = ["group"], input_covariates = ["x1","x2", "x3"], data = ds)
+sAUC.semiparametricAUC(response = "y", treatment_group = ["group"], input_covariates = ["x1"], data = fasd)
+sAUC.semiparametricAUC(response = "y", treatment_group = ["group"], input_covariates = ["x1","x2"], data = fasd)
+sAUC.semiparametricAUC(response = "y", treatment_group = ["group"], input_covariates = ["x1","x2", "x3"], data = ds)

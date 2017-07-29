@@ -3,7 +3,7 @@ import os.path
 import re
 
 try:
-    from setuptools import setup
+    from setuptools import setup, find_packages
 except ImportError:
     from distutils.core import setup
 
@@ -33,16 +33,16 @@ setup(
     author='Som B. Bohora',
     author_email="energeticsom@gmail.com",
     license='Apache 2.0',
-    packages=['saucpy'],
+    packages=find_packages(exclude = ['saucpy.tests']),
+    include_package_data = True,
     zip_safe=False,
     install_requires=[
         'python-dateutil',
         'numpy',
         'pandas',
         'patsy',
-        'scipy',
-        'itertools'
-    ],
+        'scipy'
+        ],
     test_suite="tests",
     classifiers=[
         'Development Status :: 4 - Beta',
