@@ -22,13 +22,17 @@ def grep(attrname):
     return strval
 
 
-file_text = read(fpath('sAUCpy/__init__.py'))
+file_text = read(fpath('saucpy/__init__.py'))
+
+def readme():
+    with open('README.md') as f:
+        return f.read()
 
 setup(
     name='saucpy',
     version=grep('__version__'),
     description='Perform AUC analyses with discrete covariates and a semi-parametric estimation',
-    long_description=read(fpath('README.rst')),
+    long_description=read(fpath('README.md')),
     url='https://github.com/sbohora/saucpy/',
     author='Som B. Bohora',
     author_email="energeticsom@gmail.com",

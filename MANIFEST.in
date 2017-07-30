@@ -1,2 +1,5 @@
-include HISTORY.md README.rst
+include HISTORY.md README.md
 recursive-include tests *
+include saucpy/data/ds.csv
+include saucpy/data/fasd.csv
+
