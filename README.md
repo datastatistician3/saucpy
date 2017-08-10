@@ -5,8 +5,6 @@
 ## Semi-parametric Area Under the Curve (sAUC) Regression
 Perform AUC analyses with discrete covariates and a semi-parametric estimation
 
-
-
 ### Model
 
 We consider applications that compare a response variable y between two groups (A and B) while adjusting for k categorical covariates ![](http://latex.codecogs.com/gif.latex?X_1,X_2,...,X_k).  The response variable y is a continuous or ordinal variable that is not normally distributed.  Without loss of generality, we assume each covariate is coded such that ![](http://latex.codecogs.com/gif.latex?X_i%3D1,...,n_i),for ![](http://latex.codecogs.com/gif.latex?i%3D1,...,k). For each combination of the levels of the covariates, we define the Area Under the ROC curve (AUC) in the following way:
