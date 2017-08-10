@@ -4,16 +4,13 @@ python:
   - '2.7'
   - '3.5'
   - '3.6'
+  - 'pypy'
+  - 'pypy'
   - 'pypy-5.3.1'
-  - 'pypy3.5-5.7.1-beta'
-  
-matrix:
-  allow_failures:
-    - python: 'pypy3.5-5.7.1-beta'
-    
+
 install:
-    - pip install -e
-    - pip install codecov
+    - pip install .
+    - pip install -r requirement.txt
 script: make test
 
 after_success: 
