@@ -6,7 +6,7 @@ python:
   - '3.6'
   - 'pypy'
   - 'pypy'
-  - 'pypy-5.3.1'
+  - 'pypy-0.7.0'
 
 install:
     - pip install -e .
