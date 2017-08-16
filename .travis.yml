@@ -9,6 +9,7 @@ python:
   - 'pypy-0.7.0'
 
 install:
+    - pip install -e .
     - pip install -r requirements.txt
 script: 
     - python tests/example.py
