@@ -9,10 +9,9 @@ python:
   - 'pypy-0.7.0'
 
 install:
-    - pip install -e .
-    - if [[ $TRAVIS_PYTHON_VERSION == 2.6 ]]; then pip install importlib unittest2; fi
     - pip install -r requirements.txt
-script: make test
+script: 
+    - python tests/example.py
 
 after_success: 
     - codecov
