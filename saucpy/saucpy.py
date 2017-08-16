@@ -4,7 +4,7 @@ from patsy import dmatrix
 from scipy.stats import norm
 
 class sAUC(object):
-    def calculate_auc(self, ya, yb):
+    def calculate_auc(ya, yb):
         m = len(ya)
         p = len(yb)
         I = numpy.zeros(shape=(m, p))
@@ -32,8 +32,8 @@ class sAUC(object):
     #print(calculate_auc(ya=[2,0.4,3.6,2.41], yb= [1.2,0.4,1.6,1.5]))
         
     # expand.grid
-    def expand_grid(self, *itrs):
-        def product(self, *args, **kwds):
+    def expand_grid(*itrs):
+        def product(*args, **kwds):
             pools = map(tuple, args) * kwds.get('repeat', 1)
             result = [[]]
             for pool in pools:
@@ -47,7 +47,7 @@ class sAUC(object):
 
 #    expand_grid([1, 2, 3], [2, 1])
 
-    def semiparametricAUC(self, response, treatment_group, input_covariates, data):
+    def semiparametricAUC(response, treatment_group, input_covariates, data):
         assert response is not None, "Argument response is missing."
         assert treatment_group is not None, "Argument treatment_group is missing."
         assert input_covariates is not None, "Argument input_covariates is missing. Please put covariates as list. For e.g. ['x1','x2']"
