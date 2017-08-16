@@ -1,5 +1,5 @@
 import codecs
-import os.path
+import os.path, sys
 import re
 
 try:
@@ -9,12 +9,10 @@ except ImportError:
 
 
 def fpath(name):
-    return os.path.join(os.path.dirname(__file__), name)
-
+    return os.path.join(os.path.dirname(sys.argv[0]), name)
 
 def read(fname):
     return codecs.open(fpath(fname), encoding='utf-8').read()
-
 
 def grep(attrname):
     pattern = r"{0}\W*=\W*'([^']+)'".format(attrname)
