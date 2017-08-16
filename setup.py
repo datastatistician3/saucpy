@@ -35,7 +35,7 @@ setup(
     author='Som B. Bohora',
     author_email="energeticsom@gmail.com",
     license='Apache 2.0',
-    packages=find_packages(exclude = ['saucpy.tests']),
+    packages=find_packages(exclude = ['saucpy.examples', 'saucpy.tests']),
     include_package_data = True,
     zip_safe=False,
     install_requires=[
