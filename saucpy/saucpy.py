@@ -4,7 +4,19 @@ from patsy import dmatrix
 from scipy.stats import norm
 
 class sAUC(object):
+    """An :class:`sAUC <saucpy.sAUC>` object."""
+    """ This class contains methods to perform sAUC model."""
     def calculate_auc(ya, yb):
+        """This function calculates different estimates related to AUC. 
+        This function calculates variance of predicted AUC, logit of predicted AUC,
+        and variance of logit of predicted AUC responses passed.
+        
+        :param ya: a list of numeric responses
+        :param yb: a list of numeric responses
+        
+        Usage::
+            >>> calculate_auc(ya=[2,0.4,3.6,2.41], yb= [1.2,0.4,1.6,1.5])
+        """
         m = len(ya)
         p = len(yb)
         I = numpy.zeros(shape=(m, p))
