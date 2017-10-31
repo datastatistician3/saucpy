@@ -44,6 +44,11 @@
             "location": "/bohora/",
             "text": "About me\n\n\nI am Som and am a Biostatistician at \nThe Department of Pediatrics, The University of Oklahoma Health Sciences Center\n. I received my MApStat and MS in Biostatistics from LSU and OUHSC, respectively. In addition to BBMC, I work as a statistician and data programmer in a number of pediatric research projects. I was trained in biostatistics and epidemiology, and has research experience in Fetal Alcohol Spectrum Disorders (FASD), HIV/AIDS clinical trials and child maltreatment prevention. I am interested in the applications of statistical computing and simulation, data analytics, dynamic reporting, and real-time data decision making. I use mainly R, Python, and Julia programming languages.",
             "title": "Developer"
+        },
+        {
+            "location": "/bug-report/",
+            "text": "Report any bugs and queries.\n\n\nYou can report any bugs and queries about the package by creating an issue in \nGitHub package site\n or by emailing me at \nsom-bohora@ouhsc.edu\n.",
+            "title": "Report bugs"
         }
     ]
 }
