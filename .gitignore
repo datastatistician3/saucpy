@@ -16,3 +16,6 @@ docs/_build/
 
 # tox
 .tox
+
+# block site
+site/

@@ -1,0 +1,16 @@
+site_name: saucpy
+pages:
+    - About: README.html
+    - Installation: install.md
+    - Article: paper.md
+    - Example: example-python.html
+    - saucpy Methods: python-methods.md
+    - SemiparametricAUC.jl in Julia: example-julia.html  
+    - sAUC in R: example.html  
+    - sAUC in R Shiny: r-shiny.md
+
+theme: readthedocs
+    
+markdown_extensions:
+  - mdx_math
+  - smarty
