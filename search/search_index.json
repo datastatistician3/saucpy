@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/",
-            "text": "Welcome to saucpy package site",
+            "text": "Welcome to Semiparametric Area Under the Curve Regression in Python (saucpy) package site.",
             "title": "Home"
         },
         {
@@ -12,7 +12,7 @@
         },
         {
             "location": "/install/",
-            "text": "Installation\n\n\nHere is the \nGitHub\n repository for saucpy\n\n\nYou can install saucpy via GitHub\n\n\n$ git clone https://github.com/sbohora/saucpy.git\n\n\nThis method is not availalbe yet.\n\n\n$ pip install saucpy",
+            "text": "Installation\n\n\nHere is the \nGitHub\n repository for saucpy\n\n\nYou can install saucpy via GitHub\n\n\n$ git clone https://github.com/sbohora/saucpy.git\n\n\nThe following installation method is not currently available.\n\n\n$ pip install saucpy",
             "title": "Installation"
         },
         {
