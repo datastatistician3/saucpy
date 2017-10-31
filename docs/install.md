@@ -7,7 +7,7 @@ You can install saucpy via GitHub
 
 `$ git clone https://github.com/sbohora/saucpy.git`
 
-This method is not availalbe yet.
+The following installation method is not currently available.
 
 `$ pip install saucpy`
 

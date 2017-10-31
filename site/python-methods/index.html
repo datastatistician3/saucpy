@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>saucpy Methods - saucpy</title>
+  <title>saucpy Methods - saucpy (Semiparametric AUC in Python)</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -35,7 +35,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../README/" class="icon icon-home"> saucpy</a>
+        <a href=".." class="icon icon-home"> saucpy (Semiparametric AUC in Python)</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -49,7 +49,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../README/">About</a>
+    <a class="" href="..">Home</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -90,6 +90,16 @@
     <a class="" href="../r-shiny/">sAUC in R Shiny</a>
 	    </li>
           
+            <li class="toctree-l1">
+		
+    <a class="" href="../bohora/">Developer</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../bug-report/">Report Bugs</a>
+	    </li>
+          
         </ul>
       </div>
       &nbsp;
@@ -100,7 +110,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../README/">saucpy</a>
+        <a href="..">saucpy (Semiparametric AUC in Python)</a>
       </nav>
 
       
@@ -108,7 +118,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../README/">Docs</a> &raquo;</li>
+    <li><a href="..">Docs</a> &raquo;</li>
     
       
     
@@ -123,182 +133,157 @@
             <div class="section">
               
                 <p><a href="https://github.com/sbohora/saucpy">Here is the gitHub repository for saucpy</a></p>
-<p>Below is a class called <strong>sAUC</strong> which contains several methods to perform Semi-parametric Area Under the Curve (sAUC) Regression</p>
+<p>Below are the available methods in <strong>saucpy</strong> to perform Semi-parametric Area Under the Curve (sAUC) Regression</p>
 <pre><code class="python">import numpy
 from pandas import DataFrame
 from patsy import dmatrix
 from scipy.stats import norm
+</code></pre>
 
-class sAUC(object):
-    &quot;&quot;&quot;An :class:`sAUC &lt;saucpy.sAUC&gt;` object.&quot;&quot;&quot;
-    &quot;&quot;&quot; This class contains methods to perform sAUC model.&quot;&quot;&quot;
-    def calculate_auc(ya, yb):
-        &quot;&quot;&quot;This function calculates different estimates related to AUC. 
-        This function calculates variance of predicted AUC, logit of predicted AUC,
-        and variance of logit of predicted AUC responses passed.
+<pre><code class="python">def calculate_auc(ya, yb):
+    &quot;&quot;&quot;This function calculates different estimates related to AUC. 
+    This function calculates variance of predicted AUC, logit of predicted AUC,
+    and variance of logit of predicted AUC responses passed.
 
-        :param ya: a list of numeric responses
-        :param yb: a list of numeric responses
+    :param ya: a list of numeric responses
+    :param yb: a list of numeric responses
 
-        Usage::
-            &gt;&gt;&gt; calculate_auc(ya=[2,0.4,3.6,2.41], yb= [1.2,0.4,1.6,1.5])
-        &quot;&quot;&quot;
-        m = len(ya)
-        p = len(yb)
-        I = numpy.zeros(shape=(m, p))
-        for i in range(m):
-            for j in range(p):
-                if ya[i] &gt; yb[j]:
-                    I[i, j] = 1
-                elif ya[i] == yb[j]:
-                    I[i, j] = 0.5
-                else:
-                    I[i, j] = 0
-        #finv = lambda x: (-(numpy.log((1/x)-1)))
-        auchat = numpy.mean(I)
-        #finvhat = finv(auchat)
-        vya = numpy.apply_along_axis(numpy.mean, 1, I)
-        vyb = numpy.apply_along_axis(numpy.mean, 0, I)
-        svarya = numpy.var(vya)
-        svaryb = numpy.var(vyb)
-        vhat_auchat = (svarya / m) + (svaryb / p)
-        #v_finv_auchat = vhat_auchat/((auchat**2)*(1-auchat)**2)
-        logitauchat = numpy.log(auchat / (1 - auchat))
-        var_logitauchat = vhat_auchat / ((auchat**2) * (1 - auchat)**2)
-        return([var_logitauchat, logitauchat])
+    Usage::
+        &gt;&gt;&gt; calculate_auc(ya=[2,0.4,3.6,2.41], yb= [1.2,0.4,1.6,1.5])
+    &quot;&quot;&quot;
+    m = len(ya)
+    p = len(yb)
+    I = numpy.zeros(shape=(m, p))
+    for i in range(m):
+        for j in range(p):
+            if ya[i] &gt; yb[j]:
+                I[i, j] = 1
+            elif ya[i] == yb[j]:
+                I[i, j] = 0.5
+            else:
+                I[i, j] = 0
+    #finv = lambda x: (-(numpy.log((1/x)-1)))
+    auchat = numpy.mean(I)
+    #finvhat = finv(auchat)
+    vya = numpy.apply_along_axis(numpy.mean, 1, I)
+    vyb = numpy.apply_along_axis(numpy.mean, 0, I)
+    svarya = numpy.var(vya)
+    svaryb = numpy.var(vyb)
+    vhat_auchat = (svarya / m) + (svaryb / p)
+    #v_finv_auchat = vhat_auchat/((auchat**2)*(1-auchat)**2)
+    logitauchat = numpy.log(auchat / (1 - auchat))
+    var_logitauchat = vhat_auchat / ((auchat**2) * (1 - auchat)**2)
+    return([var_logitauchat, logitauchat])
 
-    #print(calculate_auc(ya=[2,0.4,3.6,2.41], yb= [1.2,0.4,1.6,1.5]))
+#print(calculate_auc(ya=[2,0.4,3.6,2.41], yb= [1.2,0.4,1.6,1.5]))
+</code></pre>
 
-    # expand.grid
-    def expand_grid(*itrs):
-        def product(*args, **kwds):
-            pools = map(tuple, args) * kwds.get('repeat', 1)
-            result = [[]]
-            for pool in pools:
-                result = [x+[y] for x in result for y in pool]
-                for prod in result:
-                    yield tuple(prod)
-        new_product = list(product(*itrs))
-        return {'Var{}'.format(i + 1): [x[i]
-                    for x in new_product]
-                for i in range(len(itrs))}
+<pre><code class="python"># expand.grid
+def expand_grid(*itrs):
+    def product(*args, **kwds):
+        pools = map(tuple, args) * kwds.get('repeat', 1)
+        result = [[]]
+        for pool in pools:
+            result = [x+[y] for x in result for y in pool]
+            for prod in result:
+                yield tuple(prod)
+    new_product = list(product(*itrs))
+    return {'Var{}'.format(i + 1): [x[i]
+                for x in new_product]
+            for i in range(len(itrs))}
 
 #    expand_grid([1, 2, 3], [2, 1])
+</code></pre>
 
-    def semiparametricAUC(response, treatment_group, input_covariates, data):
-        assert response is not None, &quot;Argument response is missing.&quot;
-        assert treatment_group is not None, &quot;Argument treatment_group is missing.&quot;
-        assert input_covariates is not None, &quot;Argument input_covariates is missing. Please put covariates as list. For e.g. ['x1','x2']&quot;
-        assert data is not None, &quot;Argument data is missing. Please, specify name of pandas DataFrame.&quot;
+<pre><code class="python">def semiparametricAUC(response, treatment_group, input_covariates, data):
+    assert response is not None, &quot;Argument response is missing.&quot;
+    assert treatment_group is not None, &quot;Argument treatment_group is missing.&quot;
+    assert input_covariates is not None, &quot;Argument input_covariates is missing. Please put covariates as list. For e.g. ['x1','x2']&quot;
+    assert data is not None, &quot;Argument data is missing. Please, specify name of pandas DataFrame.&quot;
 
-        print(&quot;Data are being analyzed. Please, be patient.\n\n&quot;)
+    print(&quot;Data are being analyzed. Please, be patient.\n\n&quot;)
 
-        d = DataFrame(data)
-        group_covariates = treatment_group + input_covariates
+    d = DataFrame(data)
+    group_covariates = treatment_group + input_covariates
 
-        # split
-        grouped_d = d.groupby(group_covariates)[response]
+    # split
+    grouped_d = d.groupby(group_covariates)[response]
 
-        keys = list((grouped_d.groups.keys()))
+    keys = list((grouped_d.groups.keys()))
 
-        def calculate_auc(ya, yb):
-            m = len(ya)
-            p = len(yb)
-            I = numpy.zeros(shape=(m, p))
-            for i in range(m):
-                for j in range(p):
-                    if ya[i] &gt; yb[j]:
-                        I[i, j] = 1
-                    elif ya[i] == yb[j]:
-                        I[i, j] = 0.5
-                    else:
-                        I[i, j] = 0
-            #finv = lambda x: (-(numpy.log((1/x)-1)))
-            auchat = numpy.mean(I)
-            #finvhat = finv(auchat)
-            vya = numpy.apply_along_axis(numpy.mean, 1, I)
-            vyb = numpy.apply_along_axis(numpy.mean, 0, I)
-            svarya = numpy.var(vya)
-            svaryb = numpy.var(vyb)
-            vhat_auchat = (svarya / m) + (svaryb / p)
-            #v_finv_auchat = vhat_auchat/((auchat**2)*(1-auchat)**2)
-            logitauchat = numpy.log(auchat / (1 - auchat))
-            var_logitauchat = vhat_auchat / ((auchat**2) * (1 - auchat)**2)
-            return([var_logitauchat, logitauchat])
+    dict_df = {}
+    auchat_container = {}
+    my_card_1 = {}
+    for i in range(len(keys)):
+        # print(i)
+        dict_df[i] = d.loc[grouped_d.groups[keys[i]]]
 
-        dict_df = {}
-        auchat_container = {}
-        my_card_1 = {}
-        for i in range(len(keys)):
-            # print(i)
-            dict_df[i] = d.loc[grouped_d.groups[keys[i]]]
+    for j in range(int(0.5 * len(dict_df))):
+        # print(j)
+        auchat_container[j], my_card_1[j] = (calculate_auc(dict_df[j].loc[:, response].tolist(
+        ), dict_df[j + int(0.5 * len(dict_df))].loc[:, response].tolist()))
 
-        for j in range(int(0.5 * len(dict_df))):
-            # print(j)
-            auchat_container[j], my_card_1[j] = (calculate_auc(dict_df[j].loc[:, response].tolist(
-            ), dict_df[j + int(0.5 * len(dict_df))].loc[:, response].tolist()))
+    var_logitauchat = [v for v in auchat_container.values()]
+    gamma1 = [v for v in my_card_1.values()]
 
-        var_logitauchat = [v for v in auchat_container.values()]
-        gamma1 = [v for v in my_card_1.values()]
+    # get levels
+    df_keys = DataFrame(keys)
+    df_keys.columns = group_covariates
+    ds_only_covariates = df_keys[input_covariates]
 
-        # get levels
-        df_keys = DataFrame(keys)
-        df_keys.columns = group_covariates
-        ds_only_covariates = df_keys[input_covariates]
+    select_row = int(0.5 * len(ds_only_covariates))
 
-        select_row = int(0.5 * len(ds_only_covariates))
+    ds_expand = ds_only_covariates[:select_row]
 
-        ds_expand = ds_only_covariates[:select_row]
+    #ds_levels = {}
+    # for i in input_covariates:
+    #   ds_levels[i] = (d[i].cat.categories)
 
-        #ds_levels = {}
-        # for i in input_covariates:
-        #   ds_levels[i] = (d[i].cat.categories)
+    #ds_expand = (DataFrame(expand_grid(*ds_levels.values())))
 
-        #ds_expand = (DataFrame(expand_grid(*ds_levels.values())))
+    def convert_to_factor(df):
+        df = DataFrame(df)
+        for i in df.columns:
+            df[i] = df[i].astype('category')
+        return(df)
 
-        def convert_to_factor(df):
-            df = DataFrame(df)
-            for i in df.columns:
-                df[i] = df[i].astype('category')
-            return(df)
+    ds_expand = convert_to_factor(ds_expand)
+    #ds_expand.columns = input_covariates
 
-        ds_expand = convert_to_factor(ds_expand)
-        #ds_expand.columns = input_covariates
+    var_list = '+'.join(input_covariates)
 
-        var_list = '+'.join(input_covariates)
+    #from patsy import *
+    # model.matrix
+    Z = (dmatrix(var_list, ds_expand))
 
-        #from patsy import *
-        # model.matrix
-        Z = (dmatrix(var_list, ds_expand))
+    # get levels
+    di = Z.design_info
 
-        # get levels
-        di = Z.design_info
+    Z.columns = di.column_names
+    #Z.sort('x2', ascending = [True])
 
-        Z.columns = di.column_names
-        #Z.sort('x2', ascending = [True])
+    tau = numpy.diag([1 / i for i in var_logitauchat])
 
-        tau = numpy.diag([1 / i for i in var_logitauchat])
+    #from numpy.linalg import inv
+    ztauz = numpy.linalg.inv(Z.T.dot(tau).dot(Z))
 
-        #from numpy.linalg import inv
-        ztauz = numpy.linalg.inv(Z.T.dot(tau).dot(Z))
+    var_betas = numpy.diag(ztauz)
+    std_error = numpy.sqrt(var_betas)
+    betas = ztauz.dot(Z.T).dot(tau).dot(gamma1)
 
-        var_betas = numpy.diag(ztauz)
-        std_error = numpy.sqrt(var_betas)
-        betas = ztauz.dot(Z.T).dot(tau).dot(gamma1)
+    #from scipy.stats import norm
+    threshold = norm.ppf(0.975)
 
-        #from scipy.stats import norm
-        threshold = norm.ppf(0.975)
+    lo = betas - threshold * std_error
+    up = betas + threshold * std_error
 
-        lo = betas - threshold * std_error
-        up = betas + threshold * std_error
+    p_values = (norm.cdf(-numpy.abs(betas), loc=0, scale=std_error)) * 2
 
-        p_values = (norm.cdf(-numpy.abs(betas), loc=0, scale=std_error)) * 2
-
-        results = DataFrame(numpy.vstack((betas, std_error, lo, up, p_values)).T)
-        results.columns = [&quot;Coefficients&quot;, &quot;Std. Error&quot;, &quot;2.5%&quot;, &quot;97.5%&quot;, &quot;Pr(&gt;|z|)&quot;]
-        results.index = di.column_names
-        print(&quot;\nModel Summary&quot;)
-        return(results)
+    results = DataFrame(numpy.vstack((betas, std_error, lo, up, p_values)).T)
+    results.columns = [&quot;Coefficients&quot;, &quot;Std. Error&quot;, &quot;2.5%&quot;, &quot;97.5%&quot;, &quot;Pr(&gt;|z|)&quot;]
+    results.index = di.column_names
+    print(&quot;\nModel Summary&quot;)
+    return(results)
 </code></pre>
               
             </div>

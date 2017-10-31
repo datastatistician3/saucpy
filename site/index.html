@@ -5,26 +5,26 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
   
-  
-  <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>About - saucpy</title>
+  <link rel="shortcut icon" href="./img/favicon.ico">
+  <title>Home - saucpy (Semiparametric AUC in Python)</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="../css/highlight.css">
+  <link rel="stylesheet" href="./css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="./css/highlight.css">
   
   <script>
     // Current page data
-    var mkdocs_page_name = "About";
-    var mkdocs_page_input_path = "README.html";
-    var mkdocs_page_url = "/README/";
+    var mkdocs_page_name = "Home";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = "/";
   </script>
   
-  <script src="../js/jquery-2.1.1.min.js"></script>
-  <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  <script src="./js/jquery-2.1.1.min.js"></script>
+  <script src="./js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="./js/highlight.pack.js"></script> 
   
 </head>
 
@@ -35,9 +35,9 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="./" class="icon icon-home"> saucpy</a>
+        <a href="." class="icon icon-home"> saucpy (Semiparametric AUC in Python)</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
   </form>
 </div>
@@ -49,7 +49,7 @@
           
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">About</a>
+    <a class="current" href=".">Home</a>
     <ul class="subnav">
             
     </ul>
@@ -57,37 +57,47 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../install/">Installation</a>
+    <a class="" href="install/">Installation</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../paper/">Article</a>
+    <a class="" href="paper/">Article</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../example-python/">Example</a>
+    <a class="" href="example-python/">Example</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../python-methods/">saucpy Methods</a>
+    <a class="" href="python-methods/">saucpy Methods</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../example-julia/">SemiparametricAUC.jl in Julia</a>
+    <a class="" href="example-julia/">SemiparametricAUC.jl in Julia</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../example/">sAUC in R</a>
+    <a class="" href="example/">sAUC in R</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../r-shiny/">sAUC in R Shiny</a>
+    <a class="" href="r-shiny/">sAUC in R Shiny</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="bohora/">Developer</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="bug-report/">Report Bugs</a>
 	    </li>
           
         </ul>
@@ -100,7 +110,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="./">saucpy</a>
+        <a href=".">saucpy (Semiparametric AUC in Python)</a>
       </nav>
 
       
@@ -108,11 +118,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="./">Docs</a> &raquo;</li>
+    <li><a href=".">Docs</a> &raquo;</li>
     
       
     
-    <li>About</li>
+    <li>Home</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -122,7 +132,9 @@
           <div role="main">
             <div class="section">
               
-                <!DOCTYPE html>
+                <p><strong>Welcome to saucpy Python package site.</strong>
+<div class="col6 center"></p>
+<!DOCTYPE html>
 
 <p><html xmlns="http://www.w3.org/1999/xhtml"></p>
 <p><head></p>
@@ -298,10 +310,10 @@ $(document).ready(function () {
 <p>where,</p>
 <p><span class="math inline">\(\epsilon_{i_1,...,i_k} \approx N(0,\tau_{i_1,...,i_k}^2)\)</span>. Then, by stacking up the <span class="math inline">\(\hat{\gamma}_{1_i,...,i_k}\)</span> to be <span class="math inline">\(\hat{\gamma}, Z_{i_1...i_k}\)</span> to be <span class="math inline">\(\boldsymbol{Z}\)</span>, and <span class="math inline">\(\epsilon_{i_1,...,i_k}\)</span> to be <span class="math inline">\(\boldsymbol{\epsilon}\)</span>, we have</p>
 <p><span class="math display">\[\boldsymbol{\hat{\gamma}} =logit \boldsymbol{\hat{\pi}} = \boldsymbol{Z\beta + \epsilon},\]</span></p>
-<p>where, <span class="math inline">\(E(\epsilon)=0\)</span> and <span class="math inline">\(\hat{T}=Var(\epsilon)=diag(\hat{\tau}_{i_1... i_k}^2)\)</span> which is a diagonal matrix. Finally, by using the generalized least squares method, we estimate the parameters Î² and its variance-covariance matrix as follows;</p>
+<p>where, <span class="math inline">\(E(\epsilon)=0\)</span> and <span class="math inline">\(\hat{T}=Var(\epsilon)=diag(\hat{\tau}_{i_1... i_k}^2)\)</span> which is a diagonal matrix. Finally, by using the generalized least squares method, we estimate the parameters β and its variance-covariance matrix as follows;</p>
 <p><span class="math display">\[\boldsymbol{\hat{\beta} ={(\hat{Z}^T  \hat{T}^{-1}  Z)}^{-1} Z^T  \hat{T}^{-1} \hat{\gamma}}\]</span></p>
 <p>and <span class="math display">\[\hat{V}(\boldsymbol{\hat{\beta}}) = \boldsymbol{{(\hat{Z}^T  \hat{T}^{-1}  Z)}^{-1}}\]</span></p>
-<p>The above equations can be used to construct a 100(1-Î±)% Wald confidence intervals for <span class="math inline">\(\boldsymbol{\beta_i}\)</span> using formula</p>
+<p>The above equations can be used to construct a 100(1-α)% Wald confidence intervals for <span class="math inline">\(\boldsymbol{\beta_i}\)</span> using formula</p>
 <p><span class="math display">\[\hat{\beta}_i \pm Z_{1-\frac{\alpha}{2}} \sqrt{\hat{V}(\hat{\beta}_i)},\]</span></p>
 <p>where <span class="math inline">\(Z_{1-\frac{\alpha}{2}}\)</span> is the <span class="math inline">\((1-\frac{\alpha}{2})^{th}\)</span> quantile of the standard normal distribution. Equivalently, we reject</p>
 <p><span class="math inline">\(H_0:\beta_i = 0\)</span> if <span class="math inline">\(|\hat{\beta}_i| &gt; Z_{1-\frac{\alpha}{2}} \sqrt{\hat{V}(\hat{\beta}_i)},\)</span></p>
@@ -342,6 +354,7 @@ $(document).ready(function () {
 
 <p></body>
 </html></p>
+</div>
               
             </div>
           </div>
@@ -349,7 +362,7 @@ $(document).ready(function () {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../install/" class="btn btn-neutral float-right" title="Installation">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="install/" class="btn btn-neutral float-right" title="Installation">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
     </div>
@@ -377,14 +390,19 @@ $(document).ready(function () {
       
       
       
-        <span style="margin-left: 15px"><a href="../install/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="install/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme.js"></script>
-      <script src="../search/require.js"></script>
-      <script src="../search/search.js"></script>
+    <script>var base_url = '.';</script>
+    <script src="./js/theme.js"></script>
+      <script src="./search/require.js"></script>
+      <script src="./search/search.js"></script>
 
 </body>
 </html>
+
+<!--
+MkDocs version : 0.17.0
+Build Date UTC : 2017-10-31 19:18:47
+-->

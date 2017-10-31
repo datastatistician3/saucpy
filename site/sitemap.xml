@@ -3,7 +3,7 @@
 
     
     <url>
-     <loc>/README/</loc>
+     <loc>/</loc>
      <lastmod>2017-10-31</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -60,6 +60,22 @@
     
     <url>
      <loc>/r-shiny/</loc>
+     <lastmod>2017-10-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/bohora/</loc>
+     <lastmod>2017-10-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/bug-report/</loc>
      <lastmod>2017-10-31</lastmod>
      <changefreq>daily</changefreq>
     </url>

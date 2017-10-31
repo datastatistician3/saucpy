@@ -1,6 +1,7 @@
-site_name: saucpy
+site_name: saucpy (Semiparametric AUC in Python)
+
 pages:
-    - About: README.html
+    - Home: index.md
     - Installation: install.md
     - Article: paper.md
     - Example: example-python.html
@@ -8,6 +9,8 @@ pages:
     - SemiparametricAUC.jl in Julia: example-julia.html  
     - sAUC in R: example.html  
     - sAUC in R Shiny: r-shiny.md
+    - Developer: bohora.md
+    - Report Bugs: bug-report.md
 
 theme: readthedocs
     
