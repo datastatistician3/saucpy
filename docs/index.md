@@ -1,6 +1,7 @@
 **Welcome to saucpy Python package site.**
 <div class="col6 center">
 
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -69,7 +70,6 @@ h6 {
 }
 </style>
 
-<link href="data:text/css;charset=utf-8,%23TOC%20%7B%0Aposition%3A%20fixed%3B%0Aleft%3A%200%3B%0Atop%3A%200%3B%0Awidth%3A%20200px%3B%0Aheight%3A%20100%25%3B%0Aoverflow%3Aauto%3B%0A%7D" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -122,15 +122,6 @@ $(document).ready(function () {
 
 </div>
 
-<div id="TOC">
-<ul>
-<li><a href="#semi-parametric-area-under-the-curve-sauc-regression">Semi-parametric Area Under the Curve (sAUC) Regression</a><ul>
-<li><a href="#what-is-sauc-model-and-why">What is sAUC model and why?</a></li>
-<li><a href="#model">Model</a></li>
-<li><a href="#estimation">Estimation</a></li>
-</ul></li>
-</ul>
-</div>
 
 <div id="semi-parametric-area-under-the-curve-sauc-regression" class="section level2">
 <h2>Semi-parametric Area Under the Curve (sAUC) Regression</h2>
@@ -142,7 +133,7 @@ $(document).ready(function () {
 <div id="model" class="section level3">
 <h3>Model</h3>
 <p>We consider applications that compare a response variable y between two groups (A and B) while adjusting for k categorical covariates <span class="math inline">\(X_1,X_2,...,X_k\)</span>. The response variable y is a continuous or ordinal variable that is not normally distributed. Without loss of generality, we assume each covariate is coded such that <span class="math inline">\(X_i=1,...,n_i\)</span>,for <span class="math inline">\(i=1,...,k\)</span>. For each combination of the levels of the covariates, we define the Area Under the ROC curve (AUC) in the following way:</p>
-<p><span class="math display">\[\pi_{x_1 x_2...x_k}=P(Y^A&gt;Y^B|X_1=x_1,X_2=x_2,...,X_k=x_k )+ \]</span></p>
+<p><span class="math display">\[\pi_{x_1 x_2...x_k}=P(Y^A&gt;Y^B|X_1=x_1,X_2=x_2,...,X_k=x_k ) + \]</span></p>
 <p><span class="math display">\[\frac{1}{2} P(Y^A=Y^B|X_1=x_1,X_2=x_2,...,X_k=x_k ),\]</span></p>
 <p>where <span class="math inline">\(x_1=1,...,n_1,...,x_k=1,...,n_k\)</span>, and <span class="math inline">\(Y^A\)</span> and <span class="math inline">\(Y^B\)</span> are two randomly chosen observations from Group A and B, respectively. The second term in the above equation is for the purpose of accounting ties.</p>
 <p>For each covariate <span class="math inline">\(X_i\)</span>, without loss of generality, we use the last category as the reference category and define (<span class="math inline">\(n_i-1\)</span>) dummy variables <span class="math inline">\(X_i^{(1)},X_i^{(2)},...,X_i^{(n_i-1)}\)</span> such that</p>
