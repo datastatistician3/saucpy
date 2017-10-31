@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    
+    <url>
+     <loc>/README/</loc>
+     <lastmod>2017-10-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/install/</loc>
+     <lastmod>2017-10-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/paper/</loc>
+     <lastmod>2017-10-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/example-python/</loc>
+     <lastmod>2017-10-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/python-methods/</loc>
+     <lastmod>2017-10-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/example-julia/</loc>
+     <lastmod>2017-10-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/example/</loc>
+     <lastmod>2017-10-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/r-shiny/</loc>
+     <lastmod>2017-10-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+</urlset>
