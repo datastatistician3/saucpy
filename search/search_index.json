@@ -48,7 +48,7 @@
         {
             "location": "/bug-report/",
             "text": "Report any bugs and queries.\n\n\nYou can report any bugs and queries about the package by creating an issue in \nGitHub package site\n or by emailing me at \nsom-bohora@ouhsc.edu\n.",
-            "title": "Report bugs"
+            "title": "Report Bugs"
         }
     ]
 }
