@@ -1,5 +1,5 @@
 
-<!--[![Build Status](https://travis-ci.com/sbohora/saucpy.svg?token=shyYTzvvbsLRHsRAWXTg&branch=master)](https://travis-ci.com/sbohora/saucpy)
+<!--[![Build Status](https://travis-ci.com/sbohora/saucpy.svg?token=shyYTzvvbsLRHsRAWXTg&branch=master)](https://travis-ci.com/sbohora/saucpy) -->
 
 
 ## Semi-parametric Area Under the Curve (sAUC) Regression
