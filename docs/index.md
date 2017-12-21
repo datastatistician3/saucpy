@@ -182,7 +182,7 @@ $(document).ready(function () {
 <p><span class="math display">\[\boldsymbol{\hat{\gamma}} =logit \boldsymbol{\hat{\pi}} = \boldsymbol{Z\beta + \epsilon},\]</span></p>
 <p>where, <span class="math inline">\(E(\epsilon)=0\)</span> and <span class="math inline">\(\hat{T}=Var(\epsilon)=diag(\hat{\tau}_{i_1... i_k}^2)\)</span> which is a diagonal matrix. Finally, by using the generalized least squares method, we estimate the parameters β and its variance-covariance matrix as follows;</p>
 <p><span class="math display">\[\boldsymbol{\hat{\beta} ={(\hat{Z}^T  \hat{T}^{-1}  Z)}^{-1} Z^T  \hat{T}^{-1} \hat{\gamma}}\]</span></p>
-<p>and <span class="math display">\[\hat{V}(\boldsymbol{\hat{\beta}}) = \boldsymbol{{(\hat{Z}^T  \hat{T}^{-1}  Z)}^{-1}}\]</span></p>
+<p>and <span class="math display">\[\hat{V}(\boldsymbol{\hat{\beta}}) = \boldsymbol{(\hat{Z}^T  \hat{T}^{-1}  Z)}^{-1}\]</span></p>
 <p>The above equations can be used to construct a 100(1-α)% Wald confidence intervals for <span class="math inline">\(\boldsymbol{\beta_i}\)</span> using formula</p>
 <p><span class="math display">\[\hat{\beta}_i \pm Z_{1-\frac{\alpha}{2}} \sqrt{\hat{V}(\hat{\beta}_i)},\]</span></p>
 <p>where <span class="math inline">\(Z_{1-\frac{\alpha}{2}}\)</span> is the <span class="math inline">\((1-\frac{\alpha}{2})^{th}\)</span> quantile of the standard normal distribution. Equivalently, we reject</p>
