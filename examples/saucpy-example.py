@@ -2,12 +2,12 @@ from pandas import read_csv
 from saucpy import sAUC
 
 # Data analysis
-fasd = read_csv("../saucpy/data/fasd.csv")
+fasd = read_csv("../data/fasd.csv")
 fasd['group'] = fasd['group'].astype('category')
 fasd['x1']    = fasd['x1'].astype('category')
 fasd['x2']    = fasd['x2'].astype('category')
 
-ds = read_csv("../saucpy/data/ds.csv")
+ds = read_csv("../data/ds.csv")
 ds['group'] = ds['group'].astype('category')
 ds['x1']    = ds['x1'].astype('category')
 ds['x2']    = ds['x2'].astype('category')
