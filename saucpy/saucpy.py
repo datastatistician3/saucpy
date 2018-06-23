@@ -109,8 +109,8 @@ class sAUC(object):
 
         for j in range(int(0.5 * len(dict_df))):
             # print(j)
-            auchat_container[j], my_card_1[j] = (calculate_auc(dict_df[j].loc[:, response].tolist(
-            ), dict_df[j + int(0.5 * len(dict_df))].loc[:, response].tolist()))
+            auchat_container[j], my_card_1[j] = (calculate_auc(dict_df[j].loc[:, response].tolist(), 
+                            dict_df[j + int(0.5 * len(dict_df))].loc[:, response].tolist()))
 
         var_logitauchat = [v for v in auchat_container.values()]
         gamma1 = [v for v in my_card_1.values()]
