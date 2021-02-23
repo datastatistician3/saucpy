@@ -34,7 +34,7 @@ setup(
     url='https://github.com/sbohora/saucpy/',
     author='Som B. Bohora',
     author_email="energeticsom@gmail.com",
-    license='Apache 2.0',
+    license='MIT',
     packages=find_packages(exclude = ['saucpy.examples', 'saucpy.tests']),
     include_package_data = True,
     zip_safe=False,
@@ -50,17 +50,6 @@ setup(
         'Development Status :: 3 - Alpha',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 2.7',
-        'Topic :: Text Processing :: Linguistic',
+        'Topic :: Text Processing :: Linguistic'
       ]
-#    classifiers=[
-#        'Development Status :: 4 - Beta',
-#        'Intended Audience :: Developers',
-#        'License :: OSI Approved :: Apache Software License',
-#        'Programming Language :: Python :: 2.6',
-#        'Programming Language :: Python :: 2.7',
-#        'Programming Language :: Python :: 3.3',
-#        'Programming Language :: Python :: 3.4',
-#        'Programming Language :: Python :: 3.5',
-#        'Topic :: Software Development :: Libraries :: Python Modules'
-#    ]
 )
