@@ -28,7 +28,7 @@ def readme():
 
 setup(
     name='saucpy',
-    version=grep('__version__'),
+    version='0.0.1',
     description='Perform AUC analyses with discrete covariates and a semi-parametric estimation',
     long_description=read(fpath('README.md')),
     url='https://github.com/sbohora/saucpy/',

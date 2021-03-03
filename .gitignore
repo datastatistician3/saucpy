@@ -17,3 +17,5 @@ docs/_build/
 # tox
 .tox
 
+*__pycache__
+
