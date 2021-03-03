@@ -2,4 +2,4 @@
 
 ### 0.0.1
 
-- [FIX] Work on new version of forecasting package
+- [FIX] Work on new version of saucpy package
